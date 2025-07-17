@@ -11,25 +11,33 @@ source:
 
 build:
   number: 0
-  skip: true
+  skip: true # [py<37] 
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
+    - pip
+    - wheel
     - setuptools >=41
   run:
     - python
+    - importlib-metadata  # [py<38]
 
 test:
   imports:
     - paste
     - paste.deploy
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
-  home: https://pylonsproject.org/
+  home: https://docs.pylonsproject.org/projects/pastedeploy
   license: MIT
   license_family: MIT
+  license_file: license.txt
   summary: Load, configure, and compose WSGI applications and servers
   description: |
     This tool provides code to load WSGI applications and servers from URIs.
@@ -41,3 +49,4 @@ about:
 extras:
   recipe-maintainers:
     - mingwandroid
+    - mgralczyk
