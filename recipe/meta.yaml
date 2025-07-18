@@ -36,7 +36,9 @@ test:
   requires:
     - pip
     - pytest
+    - msys2-sed  # [win]
   commands:
+    - sed -i "s/\//\\\\/g" tests\sample_configs\test_config.ini # [win]
     - pip check
     - pytest -v tests
 
