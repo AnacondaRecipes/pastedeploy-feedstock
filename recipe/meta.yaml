@@ -28,10 +28,17 @@ test:
   imports:
     - paste
     - paste.deploy
+    - paste.deploy.config
+    - paste.deploy.converters
+    - paste.deploy.util
+  source_files:
+    - tests
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - pytest -v tests
 
 about:
   home: https://docs.pylonsproject.org/projects/pastedeploy
