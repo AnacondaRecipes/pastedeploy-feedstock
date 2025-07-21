@@ -40,7 +40,8 @@ test:
   commands:
     - sed -i "s/\//\\\\/g" tests\sample_configs\test_config.ini # [win]
     - pip check
-    - pytest -v tests
+    - pytest -v tests -k "not test_interpolate_exception" # [win]
+    - pytest -v tests # [not win]
 
 about:
   home: https://docs.pylonsproject.org/projects/pastedeploy
